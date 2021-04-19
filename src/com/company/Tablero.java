@@ -3,11 +3,11 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Tablero {
-    private Scanner sc = new Scanner(System.in);
-    private int rows;
-    private int colums;
-    private int dificultad;
-    private int tablero[][] = new int[rows][colums];
+    private static Scanner sc = new Scanner(System.in);
+    private static int rows;
+    private static int colums;
+    private static int dificultad;
+    private static int tablero[][] = new int[rows][colums];
 
     public Tablero(int rows, int colums){
         this.rows = rows;
@@ -27,10 +27,16 @@ public class Tablero {
     public int getColums() {
         return colums;
     }
-    public void generarTablero(){
+
+    public static void generarTablero(){
+
+        for (int x=0; x < tablero.length; x++){
+            for (int y=0; y < tablero[x].length; y++)
+                System.out.print(tablero[x]);
+        }
 
     }
-    public void setDificultad(){
+    public static void setDificultad(){
         System.out.print("Elija su modo de juego (Escriba el número en cuestión): ");
         System.out.println("1. Fácil" +
                         "\n 2. Normal" +
@@ -47,6 +53,21 @@ public class Tablero {
                 System.out.print("Indique las columnas: ");
                 colums = sc.nextInt();
                 break;
+        }
+    }
+    public void actionCoord(){
+        int x=0, y=0;
+        int intento = 0;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese las coordenadas del 1 al " + colums);
+        System.out.println("Intento :" + intento + ", Ingrese las coordenadas");
+        System.out.println("Fila: ");
+        x=sc.nextInt();
+        System.out.println("Columna: ");
+        y=sc.nextInt();
+
+        if  (x==0||y==0||x>rows||y==colums){
+            System.out.println("Coordenadas incorrectas");
         }
     }
 }
